@@ -3,15 +3,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Message } from "@/lib/types";
 import { MessageBubble } from "@/components/MessageBubble";
-import { v4 as uuid } from "uuid";
 
 // Simple fallback UUID to avoid extra dependency if uuid fails to tree-shake
 function safeId() {
-  try {
-    return uuid();
-  } catch {
-    return Math.random().toString(36).slice(2);
-  }
+  return Math.random().toString(36).slice(2) + Date.now().toString(36);
 }
 
 export default function HomePage() {
